@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+form input {
+    margin-right: 10px;
+}
+
+button {
+    margin-left: 10px;
+}
+
+.container {
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+li div {
+    display: flex;
+    gap: 5px;
+}
+
