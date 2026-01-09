@@ -7,9 +7,9 @@ class ReminderCreate(BaseModel):
 
 class ReminderUpdate(BaseModel):
     title: str
-    messgae: str
+    message: str
 
 class ReminderOut(BaseModel):
     id: int
-    title: set
+    title: str
     message: str

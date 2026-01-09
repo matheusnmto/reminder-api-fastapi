@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Reminder App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Reminder App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="container">
-    <h1>📌 Reminder App</h1>
-
-    <form id="reminder-form">
-        <input type="text" id="title" placeholder="Título" required>
-        <input type="text" id="message" placeholder="Mensagem" required>
-    <button type="submit" id="submit-btn">Adicionar</button>
-    </form>
+  <div class="fridge">
     <ul id="reminder-list"></ul>
-</div>
 
-<script src="script.js"></script>
+    <!-- botão flutuante -->
+    <button id="add-btn">+</button>
+    <button id="toggle-theme" title="Alternar tema">🌙</button>
+
+  </div>
+
+  <!-- modal -->
+  <div id="modal" class="hidden">
+    <form id="reminder-form">
+      <h2 id="modal-title">Novo lembrete</h2>
+
+      <input id="title" placeholder="Título" required />
+      <textarea id="message" placeholder="Mensagem" required></textarea>
+
+      <div class="modal-actions">
+        <button type="submit" id="submit-btn">Salvar</button>
+        <button type="button" id="cancel-btn">Cancelar</button>
+      </div>
+    </form>
+    
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,26 +1,263 @@
+/* ===============================
+   RESET E CONFIGURAÇÕES GLOBAIS
+================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===============================
+   VARIÁVEIS DE TEMA
+================================ */
+
+:root {
+  --bg-color: #e6e6e6;
+  --panel-bg: #f9f9f9;
+  --card-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #4caf50;
+  --danger-color: #e74c3c;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+/* DARK MODE */
+body.dark {
+  --bg-color: #121212;
+  --panel-bg: #1b1b1b;
+  --card-color: #242424;
+  --text-color: #f5f5f5;
+  --accent-color: #81c784;
+  --danger-color: #ff6b5c;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* ===============================
+   BODY / FUNDO
+================================ */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-form input {
-    margin-right: 10px;
+/* ===============================
+   GELADEIRA / PAINEL DO APP
+================================ */
+
+.fridge {
+  width: calc(100vw - 32px);
+  height: calc(100vh - 32px);
+
+  background: var(--panel-bg);
+  color: var(--text-color);
+
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow);
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  overflow-y: auto;
 }
 
-button {
-    margin-left: 10px;
+/* Limite elegante para telas MUITO grandes */
+@media (min-width: 1600px) {
+  .fridge {
+    max-width: 1600px;
+    max-height: 1000px;
+  }
 }
 
-.container {
-    width: 400px;
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+/* ===============================
+   BARRA SUPERIOR
+================================ */
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-li div {
-    display: flex;
-    gap: 5px;
+/* ===============================
+   LISTA DE LEMBRETES
+================================ */
+
+#reminder-list {
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
 }
 
+/* ===============================
+   POST-IT
+================================ */
+
+.post-it {
+  background: #fff6a5;
+  color: #2a2a2a;
+
+  min-height: 140px;
+  padding: 14px;
+
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Dark mode do post-it */
+body.dark .post-it {
+  background: #3b3b28;
+  color: #f5f5f5;
+}
+
+/* ===============================
+   ÍMÃ DECORATIVO
+================================ */
+
+.magnet {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+}
+
+.magnet span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d32f2f;
+}
+
+/* ===============================
+   AÇÕES DOS LEMBRETES
+================================ */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: inherit;
+}
+
+/* ===============================
+   BOTÕES FLUTUANTES
+================================ */
+
+#add-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  border: none;
+  background: var(--danger-color);
+  color: white;
+
+  font-size: 32px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 16px var(--shadow);
+}
+
+#toggle-theme {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  border: none;
+  background: var(--accent-color);
+  color: #000;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* ===============================
+   MODAL
+================================ */
+
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal.hidden {
+  display: none;
+}
+
+#modal form {
+  background: var(--card-color);
+  color: var(--text-color);
+
+  width: 320px;
+  padding: 20px;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===============================
+   ACESSIBILIDADE
+================================ */
+
+button:focus {
+  outline: 3px solid var(--accent-color);
+}
+
+/* ===============================
+   TV / TELAS GRANDES
+================================ */
+
+@media (min-width: 1200px) {
+  .fridge {
+    padding: 40px;
+  }
+
+  .post-it {
+    min-height: 180px;
+    font-size: 18px;
+  }
+}
