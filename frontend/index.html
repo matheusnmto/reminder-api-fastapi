@@ -10,13 +10,12 @@
   <div class="fridge">
     <ul id="reminder-list"></ul>
 
-    <!-- botão flutuante -->
+    <!-- botões flutuantes -->
     <button id="add-btn">+</button>
     <button id="toggle-theme" title="Alternar tema">🌙</button>
-
   </div>
 
-  <!-- modal -->
+  <!-- MODAL -->
   <div id="modal" class="hidden">
     <form id="reminder-form">
       <h2 id="modal-title">Novo lembrete</h2>
@@ -25,11 +24,10 @@
       <textarea id="message" placeholder="Mensagem" required></textarea>
 
       <div class="modal-actions">
-        <button type="submit" id="submit-btn">Salvar</button>
-        <button type="button" id="cancel-btn">Cancelar</button>
+        <button type="button" id="cancel-btn" class="btn cancel">Cancelar</button>
+        <button type="submit" id="submit-btn" class="btn confirm">Criar</button>
       </div>
     </form>
-    
   </div>
 
   <script src="script.js"></script>

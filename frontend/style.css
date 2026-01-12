@@ -1,7 +1,4 @@
-/* ===============================
-   RESET E CONFIGURAÇÕES GLOBAIS
-================================ */
-
+/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,21 +6,17 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===============================
-   VARIÁVEIS DE TEMA
-================================ */
-
+/* VARIÁVEIS */
 :root {
   --bg-color: #e6e6e6;
   --panel-bg: #f9f9f9;
   --card-color: #ffffff;
-  --text-color: #222222;
+  --text-color: #222;
   --accent-color: #4caf50;
   --danger-color: #e74c3c;
   --shadow: rgba(0, 0, 0, 0.25);
 }
 
-/* DARK MODE */
 body.dark {
   --bg-color: #121212;
   --panel-bg: #1b1b1b;
@@ -34,104 +27,55 @@ body.dark {
   --shadow: rgba(0, 0, 0, 0.6);
 }
 
-/* ===============================
-   BODY / FUNDO
-================================ */
-
+/* BODY */
 body {
   background: var(--bg-color);
   color: var(--text-color);
   min-height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ===============================
-   GELADEIRA / PAINEL DO APP
-================================ */
-
+/* APP */
 .fridge {
   width: calc(100vw - 32px);
   height: calc(100vh - 32px);
-
   background: var(--panel-bg);
-  color: var(--text-color);
-
   border-radius: 16px;
   box-shadow: 0 10px 30px var(--shadow);
-
   padding: 24px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
   overflow-y: auto;
 }
 
-/* Limite elegante para telas MUITO grandes */
-@media (min-width: 1600px) {
-  .fridge {
-    max-width: 1600px;
-    max-height: 1000px;
-  }
-}
-
-/* ===============================
-   BARRA SUPERIOR
-================================ */
-
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* ===============================
-   LISTA DE LEMBRETES
-================================ */
-
+/* LISTA */
 #reminder-list {
   list-style: none;
-
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
 }
 
-/* ===============================
-   POST-IT
-================================ */
-
+/* POST-IT */
 .post-it {
   background: #fff6a5;
   color: #2a2a2a;
-
   min-height: 140px;
   padding: 14px;
-
   border-radius: 8px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 2px 2px 6px rgba(0,0,0,.3);
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* Dark mode do post-it */
 body.dark .post-it {
   background: #3b3b28;
   color: #f5f5f5;
 }
 
-/* ===============================
-   ÍMÃ DECORATIVO
-================================ */
-
+/* ÍMÃ */
 .magnet {
   position: absolute;
   top: -8px;
@@ -145,13 +89,9 @@ body.dark .post-it {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #d32f2f;
 }
 
-/* ===============================
-   AÇÕES DOS LEMBRETES
-================================ */
-
+/* AÇÕES */
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -163,101 +103,119 @@ body.dark .post-it {
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: inherit;
 }
 
-/* ===============================
-   BOTÕES FLUTUANTES
-================================ */
-
-#add-btn {
+/* BOTÕES FLUTUANTES */
+#add-btn, #toggle-theme {
   position: fixed;
   bottom: 24px;
-  right: 24px;
-
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-
-  border: none;
-  background: var(--danger-color);
-  color: white;
-
-  font-size: 32px;
-  cursor: pointer;
-
-  box-shadow: 0 6px 16px var(--shadow);
-}
-
-#toggle-theme {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-
   width: 56px;
   height: 56px;
   border-radius: 50%;
-
   border: none;
-  background: var(--accent-color);
-  color: #000;
-
-  font-size: 24px;
   cursor: pointer;
-
+  font-size: 26px;
   box-shadow: 0 6px 16px var(--shadow);
 }
 
-/* ===============================
-   MODAL
-================================ */
+#add-btn {
+  right: 24px;
+  background: var(--danger-color);
+  color: #fff;
+}
 
+#toggle-theme {
+  left: 24px;
+  background: var(--accent-color);
+}
+
+/* MODAL OVERLAY */
 #modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn .3s ease;
 }
 
 #modal.hidden {
   display: none;
 }
 
+/* MODAL CARD */
 #modal form {
   background: var(--card-color);
-  color: var(--text-color);
-
   width: 320px;
-  padding: 20px;
-  border-radius: 12px;
-
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px var(--shadow);
   display: flex;
   flex-direction: column;
   gap: 12px;
+  animation: scaleIn .3s ease;
 }
 
-/* ===============================
-   ACESSIBILIDADE
-================================ */
-
-button:focus {
-  outline: 3px solid var(--accent-color);
+/* INPUTS */
+#modal input, #modal textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
-/* ===============================
-   TV / TELAS GRANDES
-================================ */
+#modal textarea {
+  resize: none;
+  min-height: 80px;
+}
 
-@media (min-width: 1200px) {
-  .fridge {
-    padding: 40px;
-  }
+/* BOTÕES MODAL */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
 
-  .post-it {
-    min-height: 180px;
-    font-size: 18px;
-  }
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+
+.btn.cancel {
+  background: #ccc;
+}
+
+.btn.cancel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px var(--shadow);
+}
+
+.btn.confirm {
+  background: linear-gradient(135deg, var(--accent-color), #43a047);
+  color: white;
+}
+
+.btn.confirm:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(76,175,80,.5);
+}
+
+.btn:active {
+  transform: scale(.96);
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(.9); opacity: 0 }
+  to { transform: scale(1); opacity: 1 }
 }
