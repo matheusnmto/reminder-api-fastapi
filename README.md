@@ -1,35 +1,44 @@
-Aplicação de lembretes focada em produtividade, composta por um backend em Python e uma interface web moderna com estética dark.
+# stay-on-track — Reminder System
 
-Interface	Tecnologia	Descrição
-Backend	FastAPI + SQLite	API REST com validação Pydantic e persistência local
-Frontend	Next.js + Tailwind	Interface SPA com foco em performance e animações fluidas
-Estrutura do Monorepo
-Bash
+Productivity-focused reminder app with a decoupled architecture, combining a Python backend with a modern dark-aesthetic web interface.
+
+| Layer | Technology | Description |
+|-------|------------|-------------|
+| **app/** | FastAPI + SQLite | REST API with Pydantic validation and local persistence |
+| **frontend/** | Next.js + Tailwind | SPA interface focused on performance and fluid animations |
+
+## Monorepo Structure
+```
 stay-on-track/
 ├── app/                # Backend (API)
-│   ├── main.py         # Ponto de entrada da aplicação
-│   ├── schemas.py      # Definições de tipos e validação
-│   └── reminders.db    # Base de dados SQLite
+│   ├── main.py         # Application entry point
+│   ├── schemas.py      # Type definitions and validation
+│   └── reminders.db    # SQLite database
 ├── frontend/           # Interface (Client)
-│   ├── app/            # Estrutura de rotas Next.js
-│   └── components/     # Componentes de interface
+│   ├── app/            # Next.js route structure
+│   └── components/     # UI components
 └── README.md
-Como Operar
-1. Servidor Backend
+```
 
-Execute a partir da raiz do projeto:
+## How to Run
 
-Bash
+### 1. Backend Server
+
+Run from the project root:
+```bash
 pip install fastapi uvicorn pydantic
 uvicorn main:app --reload
-Acesse a documentação da API em: http://127.0.0.1:8000/docs
+```
 
-2. Interface Frontend
+API documentation available at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-Navegue até a pasta do cliente para iniciar o ambiente de desenvolvimento:
+### 2. Frontend Interface
 
-Bash
+Navigate to the client folder to start the development environment:
+```bash
 cd frontend
 npm install
 npm run dev
-Acesse em: http://localhost:3000
+```
+
+Access at: [http://localhost:3000](http://localhost:3000)
